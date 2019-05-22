@@ -25,7 +25,7 @@ server.post("/api/users", (req, res) => {
 
   db.insert(userInfo)
     .then(user => {
-      if (!userInfo) {
+      if (!userInfo.name || !userInfo.bio) {
         res
           .status(400)
           .json({ errorMessage: "Please provide name and bio for the user." })
